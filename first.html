@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>
+            RegForm
+        </title>
+        <link rel="stylesheet" href="third.css">
+    </head>
+    <body>
+        <h1>
+            Registration Form
+        </h1>
+        <form id="user-form" class="fm">
+            <label for="name">Name</label>
+            <input required type="text" id="name" name="name" placeholder="Enter Full Name"><br>
+         
+            <label for="email">Email</label>
+            <input required type="email" id="email" name="email" placeholder="Enter Email"><br>
+         
+            <label for="password">Password</label>
+            <input required type="password" id="password" name="password" placeholder="Enter password"><br>
+         
+            <label for="dob">Date of Birth</label>
+            <input required type="date" id="dob" name="dob" placeholder="Enter date of birth" ><br>
+         
+            <input required type="checkbox" id="acceptTerms" name="acceptTerms">
+            <label for="acceptTerms">Accept Terms & Conditions</label><br>
+         
+            <button type="submit" class="sub">Submit</button><br>
+         </form>
+         <script>
+            const form = document.getElementById("user-form");
+            const dobInput = document.getElementById("dob");
+
+            form.addEventListener("submit", function(event) {
+                const today = new Date();
+                const dob = new Date(dobInput.value);
+                const age = today.getFullYear() - dob.getFullYear();
+
+                if (age < 18 || age > 55) {
+                event.preventDefault();
+                alert("Sorry, only people between ages 18 and 55 are eligible for registration.");
+                }
+             });
+         </script>
+         <h2>Entries</h2>
+         <div id="user-data"></div>
+    </body>
+    <script src="second.js"></script>
+</html>
